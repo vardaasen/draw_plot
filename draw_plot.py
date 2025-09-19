@@ -1,5 +1,7 @@
-import tkinter as tk # navnekonvensjon
-from tkinter import ttk
+import ipywidgets as widgets
+from IPython.display import display
+#import tkinter as tk # navnekonvensjon
+#from tkinter import ttk
 
 import numpy as np # navnekonvensjon
 import pandas as pd # navnekonvensjon
@@ -77,26 +79,30 @@ def draw_plot(): # snake_case
     # canvas = FigureCanvasTkAgg(fig, master=root)
     # canvas_widget = canvas.get_tk_widget()
     # canvas_widget.pack(side=tk.TOP, fill=tk.BOTH, expand=1)
-    canvas.draw()
+    fig.canvas.draw()#canvas.draw()
 
 # lager tkinter vinduet
-root = tk.Tk()
-root.title("Datavisualisering med tkinter, pandas, numpy, scipy og matplotlib.")
+#root = tk.Tk()
+#root.title("Datavisualisering med tkinter, pandas, numpy, scipy og matplotlib.")
+
+%matplotlib widget
 
 # heller en at figuren tegnes i funksjonen oppdateres den i funksjonen
 # figuren tegnes her og legges til widget
 fig, ax = plt.subplots(figsize=(5,4))
-canvas = FigureCanvasTkAgg(fig, master=root)
-canvas_widget = canvas.get_tk_widget()
-canvas_widget.pack(side=tk.TOP, fill=tk.BOTH, expand=1)
+ax.set_title("Click the button")
+
+#canvas = FigureCanvasTkAgg(fig, master=root)
+#canvas_widget = canvas.get_tk_widget()
+#canvas_widget.pack(side=tk.TOP, fill=tk.BOTH, expand=1)
 
 # Knapp for å tegne graf
-plot_button = ttk.Button(root, text="Generate and Display Graph", command=draw_plot)
-plot_button.pack(pady=10)
-
+plot_button = widgets.Button(description="Generate and Display Graph") #ttk.Button(root, text="Generate and Display Graph", command=draw_plot)
+plot_button.on_click(draw_plot)#pack(pady=10)
+display(plot_button)
 # kjører funksjonen 1 gang først slik at figuren ikke er tom
-draw_plot()
+draw_plot(None)
 
 # Kjører tkinter
-root.mainloop()
+#root.mainloop()
 
