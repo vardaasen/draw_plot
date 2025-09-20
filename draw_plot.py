@@ -9,8 +9,9 @@ import matplotlib.pyplot as plt # navnekonvensjon
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import scipy.stats as stats
 
-def draw_plot(): # snake_case
+def draw_plot(b): # snake_case
     # np.random brukes her for generering av et tall
+    # hvis vi ikke bruker seed blir grafen forkjellig hver gang knappen klikkes
     #np.random.seed(42) # seed(42) gir samme startpunkt for random hver gang programmet starter
     #https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html#numpy-random-seed
 
