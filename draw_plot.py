@@ -58,6 +58,7 @@ def draw_plot(b): # snake_case
     #https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.linregress.html#scipy.stats.linregress
     slope, intercept, r_value, p_value, std_err = stats.linregress(df['X'], df['Y'])
     regression_line = slope * df['X'] + intercept
+    formula_text = f'y = {slope:.2f}x {intercept:+.2f}'
 
     # Vi tegner en figur av pandas dataframe og scipy regresjonslinje med matplotlib
     #https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html
@@ -72,6 +73,8 @@ def draw_plot(b): # snake_case
     ax.legend()
     ax.set_xlim(0, 10)
     ax.set_ylim(-4, 4)
+    ax.text(0.05, 0.95, formula_text, transform=ax.transAxes, fontsize=12,
+            verticalalignment='top', bbox=dict(boxstyle='round,pad=0.5', fc='wheat', alpha=0.5))
     # plt.tight_layout()
 
     #https://matplotlib.org/stable/api/backend_tk_api.html#matplotlib.backends.backend_tkagg.FigureCanvasTkAgg
