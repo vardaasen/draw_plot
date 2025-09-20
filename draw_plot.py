@@ -80,7 +80,8 @@ def draw_plot(b):
             verticalalignment='top',
             bbox=dict(boxstyle='round,pad=0.5',
                       fc='wheat',
-                      alpha=0.5))
+                      alpha=0.5,
+            ))
     
     fig.canvas.draw()
 
